@@ -1,18 +1,4 @@
-<p align="center">
-    <img src="https://img.shields.io/badge/Vue-3.2.40-brightgreen.svg"/>
-    <img src="https://img.shields.io/badge/Vite-4.0.0-green.svg"/>
-    <img src="https://img.shields.io/badge/Element Plus-2.2.27-blue.svg"/>
-    <a href="https://gitee.com/youlaitech/youlai-mall" target="_blank">
-        <img src="https://gitee.com/youlaiorg/vue3-element-admin/badge/star.svg"/>
-    </a> 
-    <img src="https://img.shields.io/badge/license-MIT-green.svg"/>
-    <a href="https://gitee.com/youlaiorg" target="_blank">
-        <img src="https://img.shields.io/badge/Author-有来开源组织-orange.svg"/>
-    </a>
-</p>
-<p align="center">
-<a target="_blank" href="http://vue3.youlai.tech">在线预览</a> |  <a target="_blank" href="https://www.youlai.tech/pages/5d571c/">官方文档</a> 
-</p>
+
 
 
 
