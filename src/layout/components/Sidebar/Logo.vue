@@ -17,7 +17,7 @@ const logo = ref<string>(
 </script>
 
 <template>
-  <transition class="bg-gray-800">
+  <transition color="bg-transparent">
     <router-link
       v-if="collapse"
       key="collapse"
@@ -35,7 +35,10 @@ const logo = ref<string>(
       to="/"
     >
       <img v-if="settingsStore.sidebarLogo" src="@/assets/jnu.jpeg" class="w-5 h-5" />
-      <span class="ml-3 text-white text-sm font-bold">区块链实训平台</span>
+      <span class="ml-3  text-sm font-400">区块链实训平台</span>
     </router-link>
   </transition>
 </template>
+
+
+    

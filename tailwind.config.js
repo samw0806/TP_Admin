@@ -6,7 +6,8 @@ module.exports = {
 
     backgroundColor: theme => ({
       ...theme('colors'),
-      "sidebar-logo":'#2b2f3a'
+      "sidebar-logo":'#2b2f3a',
+
     })
   },
   plugins: [],

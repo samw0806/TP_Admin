@@ -53,7 +53,7 @@ import {
   UserType
 } from '@/api/user/types';
 
-const deptTreeRef = ref(ElTree); // 部门树
+const deptTreeRef = ref(ElTree); // 班级树
 const queryFormRef = ref(ElForm); // 查询表单
 const dataFormRef = ref(ElForm); // 用户表单
 const importFormRef = ref(ElForm); // 导入表单
@@ -72,7 +72,7 @@ const state = reactive({
     visible: false
   } as DialogType,
   deptName: undefined,
-  // 部门下拉项
+  // 班级下拉项
   deptOptions: [] as OptionType[],
   // 性别下拉项
   genderOptions: [] as OptionType[],
@@ -90,7 +90,7 @@ const state = reactive({
     nickname: [
       { required: true, message: '用户昵称不能为空', trigger: 'blur' }
     ],
-    deptId: [{ required: true, message: '所属部门不能为空', trigger: 'blur' }],
+    deptId: [{ required: true, message: '所属班级不能为空', trigger: 'blur' }],
     roleIds: [{ required: true, message: '用户角色不能为空', trigger: 'blur' }],
     email: [
       {
@@ -144,7 +144,7 @@ watchEffect(
 );
 
 /**
- * 部门筛选
+ * 班级筛选
  */
 function filterDeptNode(value: string, data: any) {
   if (!value) {
@@ -154,7 +154,7 @@ function filterDeptNode(value: string, data: any) {
 }
 
 /**
- * 部门树节点click
+ * 班级树节点click
  */
 function handleDeptNodeClick(data: { [key: string]: any }) {
   state.queryParams.deptId = data.value;
@@ -333,7 +333,7 @@ function closeDialog() {
 }
 
 /**
- * 获取部门下拉项
+ * 获取班级下拉项
  */
 async function getDeptOptions() {
   listDeptOptions().then(response => {
@@ -451,7 +451,7 @@ function handleExport() {
 onMounted(() => {
   // 初始化性别字典
   getGenderOptions();
-  // 初始化部门
+  // 初始化班级
   getDeptOptions();
   // 初始化用户列表数据
   handleQuery();
@@ -461,12 +461,12 @@ onMounted(() => {
 <template>
   <div class="app-container">
     <el-row :gutter="20">
-      <!-- 部门树 -->
+      <!-- 班级树 -->
       <el-col :span="4" :xs="24">
         <el-card shadow="never">
           <el-input
             v-model="deptName"
-            placeholder="部门名称"
+            placeholder="班级名称"
             clearable
             :prefix-icon="Search"
             style="margin-bottom: 20px"
@@ -596,7 +596,7 @@ onMounted(() => {
             />
 
             <el-table-column
-              label="部门"
+              label="班级"
               width="120"
               align="center"
               prop="deptName"
@@ -684,10 +684,10 @@ onMounted(() => {
           <el-input v-model="formData.nickname" placeholder="请输入用户昵称" />
         </el-form-item>
 
-        <el-form-item label="所属部门" prop="deptId">
+        <el-form-item label="所属班级" prop="deptId">
           <el-tree-select
             v-model="formData.deptId"
-            placeholder="请选择所属部门"
+            placeholder="请选择所属班级"
             :data="deptOptions"
             filterable
             check-strictly
@@ -759,10 +759,10 @@ onMounted(() => {
         :rules="rules"
         label-width="80px"
       >
-        <el-form-item label="部门" prop="deptId">
+        <el-form-item label="班级" prop="deptId">
           <el-tree-select
             v-model="importFormData.deptId"
-            placeholder="请选择部门"
+            placeholder="请选择班级"
             :data="deptOptions"
             filterable
             check-strictly

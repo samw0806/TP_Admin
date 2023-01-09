@@ -38,9 +38,9 @@ const state = reactive({
   } as DeptForm,
   rules: {
     parentId: [
-      { required: true, message: '上级部门不能为空', trigger: 'blur' }
+      { required: true, message: '上级班级不能为空', trigger: 'blur' }
     ],
-    name: [{ required: true, message: '部门名称不能为空', trigger: 'blur' }],
+    name: [{ required: true, message: '班级名称不能为空', trigger: 'blur' }],
     sort: [{ required: true, message: '显示排序不能为空', trigger: 'blur' }]
   }
 });
@@ -80,14 +80,14 @@ function handleSelectionChange(selection: any) {
 }
 
 /**
- * 获取部门下拉数据
+ * 获取班级下拉数据
  */
 async function getDeptOptions() {
   const deptOptions: any[] = [];
   listDeptOptions().then(response => {
     const rootDeptOption = {
       value: '0',
-      label: '顶级部门',
+      label: '顶级班级',
       children: response.data
     };
     deptOptions.push(rootDeptOption);
@@ -103,7 +103,7 @@ function handleAdd(row: any) {
   formData.value.id = undefined;
   formData.value.parentId = row.id;
   dialog.value = {
-    title: '添加部门',
+    title: '添加班级',
     visible: true
   };
 }
@@ -115,7 +115,7 @@ async function handleUpdate(row: any) {
   await getDeptOptions();
   const deptId = row.id || state.ids;
   state.dialog = {
-    title: '修改部门',
+    title: '修改班级',
     visible: true
   };
   getDeptForm(deptId).then((response: any) => {
@@ -194,15 +194,15 @@ onMounted(() => {
         <el-form-item label="关键字" prop="keywords">
           <el-input
             v-model="queryParams.keywords"
-            placeholder="部门名称"
+            placeholder="班级名称"
             @keyup.enter="handleQuery"
           />
         </el-form-item>
 
-        <el-form-item label="部门状态" prop="status">
+        <el-form-item label="班级状态" prop="status">
           <el-select
             v-model="queryParams.status"
-            placeholder="部门状态"
+            placeholder="班级状态"
             clearable
           >
             <el-option :value="1" label="正常" />
@@ -248,7 +248,7 @@ onMounted(() => {
         @selection-change="handleSelectionChange"
       >
         <el-table-column type="selection" width="55" align="center" />
-        <el-table-column prop="name" label="部门名称" min-width="300" />
+        <el-table-column prop="name" label="班级名称" min-width="300" />
         <el-table-column prop="status" label="状态" width="200">
           <template #default="scope">
             <el-tag v-if="scope.row.status == 1" type="success">正常</el-tag>
@@ -290,18 +290,18 @@ onMounted(() => {
         :rules="rules"
         label-width="80px"
       >
-        <el-form-item label="上级部门" prop="parentId">
+        <el-form-item label="上级班级" prop="parentId">
           <el-tree-select
             v-model="formData.parentId"
-            placeholder="选择上级部门"
+            placeholder="选择上级班级"
             :data="deptOptions"
             filterable
             check-strictly
             :render-after-expand="false"
           />
         </el-form-item>
-        <el-form-item label="部门名称" prop="name">
-          <el-input v-model="formData.name" placeholder="请输入部门名称" />
+        <el-form-item label="班级名称" prop="name">
+          <el-input v-model="formData.name" placeholder="请输入班级名称" />
         </el-form-item>
         <el-form-item label="显示排序" prop="sort">
           <el-input-number
@@ -311,7 +311,7 @@ onMounted(() => {
             :min="0"
           />
         </el-form-item>
-        <el-form-item label="部门状态">
+        <el-form-item label="班级状态">
           <el-radio-group v-model="formData.status">
             <el-radio :label="1">正常</el-radio>
             <el-radio :label="0">禁用</el-radio>
